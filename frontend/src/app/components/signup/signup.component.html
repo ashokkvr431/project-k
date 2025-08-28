@@ -1,0 +1,66 @@
+<div class="card w-50 mx-auto mt-5">
+  <h4 class="card-header text-center">Sign Up</h4>
+  <div class="card-body">
+    <form action="" #form="ngForm" (ngSubmit)="signin(form)">
+      <div class="form-group">
+        <label for="" class="mt-2">Full name</label>
+        <input type="text" placeholder="Enter your full name" class="form-control mt-1" ngModel name="name" required minlength="3" />
+        <div class="invalid mt-1" *ngIf="form.controls['name']?.['touched'] && form.controls['name']?.errors">
+            <div *ngIf="form.controls['name']?.['errors']?.['required']">
+              Username is required
+            </div>
+            <div *ngIf="form.controls['name']?.['errors']?.['minlength']">
+              Username must contain minimum 3 characters
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="mt-2">Email</label>
+        <input type="email" placeholder="Enter your email" class="form-control mt-1" ngModel name="email" required email />
+        <div class="invalid mt-1" *ngIf="form.controls['email']?.['touched'] && form.controls['email']?.errors">
+            <div *ngIf="form.controls['email']?.['errors']?.['required']">
+              Email is required
+            </div>
+            <div *ngIf="form.controls['email']?.['errors']?.['email']">
+              Invalid email
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="mt-2">Password</label>
+        <input type="password" placeholder="Password" class="form-control mt-1" ngModel name="password" required minlength="6" />
+        <div class="invalid mt-1" *ngIf="form.controls['password']?.['touched'] && form.controls['password']?.errors">
+            <div *ngIf="form.controls['password']?.['errors']?.['required']">
+              Password is required
+            </div>
+            <div *ngIf="form.controls['password']?.['errors']?.['minlength']">
+              Password must contain minimum 6 characters
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="mt-2">Confirm Password</label>
+        <input type="password" placeholder="Confirm password" class="form-control mt-1" ngModel name="cpassword" required />
+        <div class="invalid mt-1" *ngIf="form.controls['cpassword']?.['touched'] && form.controls['cpassword']?.['value'] != form.controls['password']?.['value']">
+            Password must match
+        </div>
+      </div>
+
+      <label for="" class="mt-2">Gender</label>
+      <label for="">
+        <input type="radio" class="m-1" ngModel name="gender" value="M">Male
+      </label>
+      <label for="">
+        <input type="radio" ngModel class="m-1" name="gender" value="F">Female
+      </label>
+
+      <div class="mt-2">
+        <button class="btn btn-primary mt-2" [disabled]="form.invalid">Signup</button>
+      </div>
+      <div>
+        <p class="mt-1">Already have an account ? <a routerLink="/login">Login</a> </p>
+      </div>
+    </form>
+  </div>
+</div>
+
